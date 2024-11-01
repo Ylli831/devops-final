@@ -1,3 +1,47 @@
+#ignore
+# Laravel specific
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+.env
+.env.*.php
+
+# IDE specific
+/.idea
+/.vscode
+/.env.local
+/.env.testing
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Composer files
+composer.lock
+
+# Logs
+storage/logs/*
+!storage/logs/.gitkeep
+
+# Cache
+/storage/framework/cache/*
+!storage/framework/cache/.gitkeep
+
+# Sessions
+/storage/framework/sessions/*
+!storage/framework/sessions/.gitkeep
+
+# Queues
+/storage/framework/views/*
+!storage/framework/views/.gitkeep
+
+# Other
+/.phpunit.result.cache
+/.phpunit.cache
+
+
 # Logs
 logs
 *.log
