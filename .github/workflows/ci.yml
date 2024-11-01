@@ -1,0 +1,30 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - master  # Change to your default branch if needed
+  pull_request:
+    branches:
+      - master  # Change to your default branch if needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3.12'  # Change to your PHP version
+          tools: composer
+
+      - name: Install Dependencies
+        run: composer install
+
+      - name: Run Tests
+        run: vendor/bin/phpunit
+
