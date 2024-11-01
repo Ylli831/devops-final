@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master  # Ensure this matches your default branch
+      - master
 
 jobs:
   build:
@@ -16,19 +16,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.19.1'  # Change to your preferred version
+          node-version: '14'
 
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Set up Python 2
+        run: |
+          sudo apt-get install python2
+          npm config set python python2
 
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
         run: npm test
-
