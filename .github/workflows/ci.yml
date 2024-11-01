@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - master  # Ensure this matches your default branch
 
 jobs:
   build:
@@ -16,7 +16,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # or your preferred version
+          node-version: '16'  # Change to your preferred version
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: npm install
